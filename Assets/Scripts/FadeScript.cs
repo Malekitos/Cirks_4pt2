@@ -1,16 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FadeScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Image img;
+    Color tempColor;
     void Start()
     {
-        
+        img = GetComponent<Image>();
+        tempColor = img.color;
+        tempColor.a = 1f;
+        StartCoroutine(FadeOut(0.15f));
     }
 
-    // Update is called once per frame
+    IEnumerator FadeOut(float seconds) { 
+        for(float a = 1f; a>-0.05f; a -= 0.05f)
+        {
+            tempColor = img.color;
+            tempColor.a = a;
+            img.color = tempColor;
+            yield return new WaitForSeconds(seconds);
+        }
+        img.raycastTarget = false;
+    }
+
     void Update()
     {
         
