@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cursorScript : MonoBehaviour
+public class CursorScript : MonoBehaviour
 {
-
     public Texture2D[] cursors;
-    // Start is called before the first frame update
+
     void Start()
     {
         DefaultCursor();
@@ -16,12 +15,19 @@ public class cursorScript : MonoBehaviour
     {
         Cursor.SetCursor(cursors[0], Vector2.zero, CursorMode.ForceSoftware);
     }
+
     public void OnButton()
     {
         Cursor.SetCursor(cursors[1], Vector2.zero, CursorMode.ForceSoftware);
     }
+
     public void ClickedButton()
     {
         Cursor.SetCursor(cursors[2], Vector2.zero, CursorMode.ForceSoftware);
+    }
+
+    public void OnObject()
+    {
+        Cursor.SetCursor(cursors[3], Vector2.zero, CursorMode.ForceSoftware);
     }
 }
